@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>WavePlanner</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="./static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="./static/css/heroic-features.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">WavePlanner</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">Welcome to WavePlanner</h1>
+      <p class="lead">WavePlanner is here to help you plan your surf trip. Simply tell us where you are and where you want to surf. WavePlanner will return
+        three things: the surf conditions, the route to get you there and the nearest pub for suitable post surf refreshment. </p>
+
+      <div class="content-section">
+        <form action="/" method="post">
+          <fieldset class="form-group">
+              <!-- <legend class="border-bottom mb-4">Login</legend> -->
+              <div class="form-group" name="Location" placeholder="What is your current location? (UK Only)">
+                <label>Where are you located?</label>
+                {{ form.location(class="form-control form-control-lg") }}
+                <small id="emailHelp" class="form-text text-muted">In beta - probably best if you use somewhere in the UK.</small>
+              </div>
+              <div class="form-group" name="Spot" placeholder="Where do you want to go surfing? (Croyde and Newquay only, sorry!)">
+                <label>What surf spot do you want to check out?</label>
+                {{ form.spot(class="form-control form-control-lg") }}
+                <small id="emailHelp" class="form-text text-muted">In beta - so, only Croyde and Newquay work right now.</small>
+              </div>
+          </fieldset>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info")}}
+          </div>
+        </form>
+      </div>
+
+
+      <!-- <form method="post">
+        <div class="form-group">
+          <label>Where are you located?</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">In beta - probably best if you use somewhere in the UK.</small>
+        </div>
+        <div class="form-group">
+          <label>What surf spot do you want to check out?</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <small id="emailHelp" class="form-text text-muted">In beta - so, only Croyde and Newquay work right now.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Waves Ahoy!</button>
+      </form> -->
+    </header>
+    <!-- Page Features -->
+    <div class="row text-center">
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+          <img class="card-img-top" src=".\static\action-beach-daytime-1644724.jpg" alt="">
+
+          <div class="card-body">
+            <h4 class="card-title">Swell</h4>
+            <p class="card-text">{{ waves }} in {{ spot }} currently.</p>
+            <a href="http://magicseaweed.com"><img src="https://im-1-uk.msw.ms/msw_powered_by.png"></a>
+          </div>
+          <!-- <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src=".\static\activity-adventure-blur-297642.jpg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Route/Distance</h4>
+            <p class="card-text">To drive from {{ location }} to {{ spot }}, is {{ distance }}
+              kilometers. Currently that will take about {{ duration }} in travel time
+            </p>
+          </div>
+          <!-- <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src=".\static\alcoholic-beverages-bar-beer-63633.jpg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Nearest Pub</h4>
+            <p class="card-text">The closest pub to {{ spot }} is: {{ pub }}</p>
+          </div>
+          <!-- <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <!-- <img class="card-img-top" src="./static/pupper.JPG" alt=""> -->
+          <!-- <img class="card-img-top" src="https://images.dog.ceo/breeds/terrier-fox/n02095314_1505.jpg" alt=""> -->
+          <img class="card-img-top" src="{{ dog }}" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Bonus dog</h4>
+            <p class="card-text">You earned it!!</p>
+          </div>
+          <!-- <div class="card-footer">
+            <a href="#" class="btn btn-primary">Find Out More!</a>
+          </div> -->
+        </div>
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; WavePlanner 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+{% endblock content %}
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="./static/vendor/jquery/jquery.min.js"></script>
+  <script src="./static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
